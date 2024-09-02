@@ -1,0 +1,20 @@
+{
+  "name": "guiaperguntas",
+  "version": "1.0.0",
+  "description": "uma simples plataforma de perguntas e respostas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Daniel Paiva Borges",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "guiaperguntas": "file:",
+    "mysql2": "^3.2.1",
+    "projeto-perguntas_respostas": "file:",
+    "sequelize": "^6.37.3"
+  }
+}
