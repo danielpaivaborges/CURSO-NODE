@@ -1,4 +1,4 @@
-"use strict";
+
 const express = require("express");
 //importando o banco
 const conexao = require('./database/database.js')
@@ -15,9 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 
 
 //iniciando conexao
-conexao.authenticate().then(()=>{
-  console.log("banco de dados conectado com sucesso...")
-})
+conexao.authenticate().then(()=>console.log("deu certo"))
 
 //ROTAS
 //criando a rota principal
