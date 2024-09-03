@@ -14,7 +14,6 @@
     "express": "^4.19.2",
     "guiaperguntas": "file:",
     "mysql2": "^3.2.1",
-    "projeto-perguntas_respostas": "file:",
     "sequelize": "^6.37.3"
   }
 }

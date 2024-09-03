@@ -1,14 +1,9 @@
 "use strict";
 const Sequelize = require("sequelize");
 
-const conexao = new Sequelize(
-  ("everos",
-  "everos",
-  "root2024",
-  {
-    host: "mysql30-farm10.kinghost.net",
-    dialect: "mysql"
-  })
-);
+const conexao = new Sequelize("everos", "everos", "root2024", {
+  host: "mysql.everos.com.br",
+  dialect: "mysql"
+});
 
-module.exports = conexao
+module.exports = conexao;

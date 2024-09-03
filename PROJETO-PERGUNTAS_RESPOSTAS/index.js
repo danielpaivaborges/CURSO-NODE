@@ -1,7 +1,9 @@
 "use strict";
 const express = require("express");
 //importando o banco
-const conexao = require('./database/database.js')
+const conexao = require("./database/database.js");
+//importando os models
+const perguntaModel = require("./models/pergunta.js");
 
 //atribuindo express ao app
 const app = express();
@@ -13,11 +15,15 @@ app.use(express.static("public"));
 app.use(express.json()); //ESTE É MAIS USADO COM API
 app.use(express.urlencoded({ extended: false }));
 
-
 //iniciando conexao
-conexao.authenticate().then(()=>{
-  console.log("banco de dados conectado com sucesso...")
-})
+conexao
+  .authenticate()
+  .then(() => {
+    console.log("banco de dados conectado com sucesso...");
+  })
+  .catch((error) => {
+    console.log("houve um erro...", error);
+  });
 
 //ROTAS
 //criando a rota principal
@@ -33,11 +39,11 @@ app.get("/perguntar", (req, res) => {
 app.post("/salvarpergunta", (req, res) => {
   const titulo = req.body.titulo;
   const descricao = req.body.descricao;
-  res.send(`as informações recebidas foram: ${titulo} - ${descricao}`);
+  perguntaModel.create({ titulo, descricao }).then(() => res.redirect("/"));
 });
 
 //criando o servidor
-app.listen(21179, (error) => {
+app.listen(21005, (error) => {
   if (error) {
     console.log(error);
   } else {
