@@ -1,7 +1,6 @@
 {
   "name": "proj_perguntas",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,10 +8,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "description": "",
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^4.19.2",
-    "mysql2": "^3.2.1",
+    "mysql2": "^3.11.0",
     "sequelize": "^6.37.3"
   }
 }

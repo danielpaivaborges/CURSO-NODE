@@ -1,27 +1,31 @@
 const express = require("express");
 
-//criando o aplicativo
 const app = express();
+const conexao = require("./database/database");
 
+app.set("view engine", "ejs");
+app.use(express.static("public"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-//configurando o aplicativo
-app.set('view engine', 'ejs')
-app.use(express.static('public'))
+conexao.authenticate().then(() => {
+  console.log("banco de dados conectado com sucesso...");
+});
 
+app.get("/", (req, res) => {
+  res.render("index");
+});
 
-app.get('/', (req,res)=>{
-    res.render('index')
-})
+app.get("/perguntar", (req, res) => {
+  res.render("perguntar");
+});
 
-app.get('/perguntar', (req,res)=>{
-    res.render('perguntar')
-})
+app.post("/salvarpergunta", (req, res) => {
+  const titulo = req.body.titulo;
+  const descricao = req.body.descricao;
+  res.send(`o titulo ${titulo} tem o valor ${descricao}`);
+});
 
-//subindo o servidor
-app.listen(21005, (error) => {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log("servidor iniciado com sucesso...");
-  }
+app.listen(21005, () => {
+  console.log("servidor ativado com sucesso...");
 });
