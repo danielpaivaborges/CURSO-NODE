@@ -19,7 +19,7 @@ fs.createReadStream("kepler_data.csv")
     parse({
       comment: "#",
       columns: true,
-      delimiter: ','
+      delimiter: ","
     })
   )
   .on("data", (data) => {
@@ -32,10 +32,12 @@ fs.createReadStream("kepler_data.csv")
   })
   .on("end", () => {
     console.log(
+      `foram encontrados ${results.length} planetas habitáveis, são eles: `
+    );
+    console.log(
       results.map((planet) => {
         return planet["kepler_name"];
       })
     );
-    console.log(`foram encontrados ${results.length} planetas habitáveis.`);
     console.log("fim da leitura");
   });
