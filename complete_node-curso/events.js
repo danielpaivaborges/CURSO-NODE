@@ -16,5 +16,6 @@ celebridade.on("competiu", (resultado) => {
 process.on("exit", (code) => {
   console.log("Processo executado", code);
 });
+
 celebridade.emit("ganhou a corrida");
 celebridade.emit("competiu", "perdeu");
