@@ -1,5 +1,5 @@
 {
-  "name": "servidor",
+  "name": "api-express",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "servidor": "file:"
+    "api-express": "file:",
+    "express": "^4.19.2"
   }
 }
