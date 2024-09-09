@@ -12,6 +12,7 @@
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "guiaperguntas": "file:",
     "mysql2": "^3.11.0",
     "sequelize": "^6.37.3"
   }
