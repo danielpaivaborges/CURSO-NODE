@@ -1,11 +1,12 @@
 "use strict";
 const express = require("express");
+const amigosController = require("./controllers/amigos.controller");
+
+
 const app = express();
-const amigos = [
-  { id: 0, nome: "daniel" },
-  { id: 1, nome: "arthur" },
-  { id: 2, nome: "carolaine" }
-];
+const amigosRouter = express.Router()
+
+ app.use('/amigos', amigosRouter)
 
 //criando middleware
 app.use(function (req, res, next) {
@@ -19,32 +20,9 @@ app.use(function (req, res, next) {
 
 app.use(express.json());
 
-app.get("/amigos", (req, res) => {
-  res.json(amigos);
-});
-
-app.get("/amigos/:amigoId", (req, res) => {
-  const amigoID = Number(req.params.amigoId);
-  const amigo = amigos[amigoID];
-  if (amigo) {
-    res.json(amigo);
-  } else {
-    res.status(404).json({ mensagem: "Amigo não encontrado" });
-  }
-});
-
-//criando amigos
-app.post("/amigos", (req, res) => {
-  if (req.body.nome) {
-    const novoAmigo = { nome: req.body.nome, id: amigos.length };
-    amigos.push(novoAmigo);
-    res.json(novoAmigo);
-  } else {
-    res.status(400).json({
-      mensagem: "não foi fornecido um nome válido."
-    });
-  }
-});
+amigosRouter.get("/", amigosController.getFriends);
+amigosRouter.get("/:amigoId", amigosController.getFriend);
+amigosRouter.post("", amigosController.postFriend);
 
 app.listen(21005, () => {
   console.log("servidor online...");
