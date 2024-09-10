@@ -1,12 +1,14 @@
 "use strict";
 const express = require("express");
 const amigosController = require("./controllers/amigos.controller");
-
+const path = require("path");
 
 const app = express();
-const amigosRouter = express.Router()
+const amigosRouter = express.Router();
+app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, "views"));
 
- app.use('/amigos', amigosRouter)
+app.use("/amigos", amigosRouter);
 
 //criando middleware
 app.use(function (req, res, next) {
@@ -20,9 +22,19 @@ app.use(function (req, res, next) {
 
 app.use(express.json());
 
-amigosRouter.get("/", amigosController.getFriends);
+app.get("/", (req, res) => {
+  res.render("index", {
+    titulo: "Amigos",
+    titulo_pagina: "um grande titulo"
+  });
+});
 amigosRouter.get("/:amigoId", amigosController.getFriend);
 amigosRouter.post("", amigosController.postFriend);
+
+app.get("/imagem", (req, res) => {
+  const caminho = path.join(__dirname, "public", "me.png");
+  res.sendFile(caminho);
+});
 
 app.listen(21005, () => {
   console.log("servidor online...");

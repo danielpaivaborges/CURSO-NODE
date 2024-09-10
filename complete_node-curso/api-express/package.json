@@ -12,7 +12,8 @@
   "dependencies": {
     "api-express": "file:",
     "browser-sync": "^3.0.2",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "hbs": "^4.2.0"
   },
   "description": ""
 }
