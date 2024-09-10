@@ -11,7 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "api-express": "file:",
-    "express": "^3.21.2"
+    "browser-sync": "^3.0.2",
+    "express": "^4.19.2"
   },
   "description": ""
 }
