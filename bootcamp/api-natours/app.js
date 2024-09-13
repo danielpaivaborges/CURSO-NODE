@@ -1,7 +1,10 @@
 'use strict';
+
 const express = require('express');
 const app = express();
 const fs = require('fs');
+
+// Import functions from 'funcoes' file
 const {
   getTour,
   getTours,
@@ -10,16 +13,22 @@ const {
   postTour,
 } = require('./funcoes');
 
-//usando o middleware
+// Configure express to parse JSON requests
 app.use(express.json());
 
-app.route('/api/v1/tours').get(getTours).post(postTour);
+// Define routes for tours
+app
+  .route('/api/v1/tours')
+  .get(getTours) // Get all tours
+  .post(postTour); // Create a new tour
+
 app
   .route('/api/v1/tours/:id')
-  .get(getTour)
-  .patch(updateTour)
-  .delete(deleteTour);
+  .get(getTour) // Get a single tour by ID
+  .patch(updateTour) // Update a tour
+  .delete(deleteTour); // Delete a tour
 
-app.listen(3000, (error) => {
-  console.log('servidor iniciado...');
+// Start the server
+app.listen(3000, () => {
+  console.log('Server started...');
 });
