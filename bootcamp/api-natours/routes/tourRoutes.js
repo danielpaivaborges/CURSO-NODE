@@ -23,6 +23,9 @@ function logRequestTime(req, res, next) {
   next();
 }
 
+//criando um middleware para avaliar os dados antes de fazer o post
+
+
 router.use(logRequestTime)
 // Define routes for tours
 router
