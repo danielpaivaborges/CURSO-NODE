@@ -8,6 +8,7 @@ const tours = JSON.parse(
 );
 
 const getTours = (req, res) => {
+  console.log(req.requestTime);
   res.status(200).json({
     status: 'dados retornados com sucesso',
     results: tours.length,
@@ -81,10 +82,50 @@ const deleteTour = (req, res) => {
   }
 };
 
+const getAllUsers = (req, res) => {
+  res.status(500).json({
+    status: 'erro',
+    mensagem: 'esta rota não foi encontada',
+  });
+};
+
+const createUser = (req, res) => {
+  res.status(500).json({
+    status: 'erro',
+    mensagem: 'esta rota não foi encontrada',
+  });
+};
+
+const getUser = (req, res) => {
+  res.status(500).json({
+    status: 'erro',
+    mensagem: 'esta rota não foi encontrada',
+  });
+};
+
+const updateUser = (req, res) => {
+  res.status(500).json({
+    status: 'erro',
+    mensagem: 'esta rota não foi encontrada',
+  });
+};
+
+const deleteUser = (req, res) => {
+  res.status(500).json({
+    status: 'erro',
+    mensagem: 'esta rota não foi encontrada',
+  });
+};
+
 module.exports = {
   getTour,
   getTours,
   deleteTour,
   updateTour,
   postTour,
+  getAllUsers,
+  createUser,
+  getUser,
+  updateUser,
+  deleteUser,
 };

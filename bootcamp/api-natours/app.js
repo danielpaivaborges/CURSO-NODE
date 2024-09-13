@@ -2,7 +2,9 @@
 
 const express = require('express');
 const app = express();
-const fs = require('fs');
+const morgan = require('morgan');
+const tourController = require('./routes/tourRoutes');
+const userController = require('./routes/userRoutes');
 
 // Import functions from 'funcoes' file
 const {
@@ -11,24 +13,19 @@ const {
   deleteTour,
   updateTour,
   postTour,
+  getAllUsers,
+  createUser,
+  getUser,
+  updateUser,
+  deleteUser
 } = require('./funcoes');
 
-// Configure express to parse JSON requests
+
+// Add middleware
+
 app.use(express.json());
+app.use(morgan('dev'));
+app.use('/api/v1/tours', tourController);
+app.use('/api/v1/users', userController);
 
-// Define routes for tours
-app
-  .route('/api/v1/tours')
-  .get(getTours) // Get all tours
-  .post(postTour); // Create a new tour
-
-app
-  .route('/api/v1/tours/:id')
-  .get(getTour) // Get a single tour by ID
-  .patch(updateTour) // Update a tour
-  .delete(deleteTour); // Delete a tour
-
-// Start the server
-app.listen(3000, () => {
-  console.log('Server started...');
-});
+module.exports = app
